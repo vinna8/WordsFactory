@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WordsFactory</string>
+    <string name="splash_screen">girl</string>
 </resources>
