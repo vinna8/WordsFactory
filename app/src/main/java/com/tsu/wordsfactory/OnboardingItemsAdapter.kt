@@ -31,12 +31,10 @@ class OnboardingItemsAdapter(private val onboardingItems: List<OnboardingItem>) 
 
         private val imageOnboarding = view.findViewById<ImageView>(R.id.imageOnboarding)
         private val textTitle = view.findViewById<TextView>(R.id.textTitle)
-        private val textButton = view.findViewById<TextView>(R.id.buttonOndoarding)
 
         fun bind(onboardingItem: OnboardingItem) {
             imageOnboarding.setImageResource(onboardingItem.onboardingImage)
             textTitle.text = onboardingItem.title
-            textButton.text = onboardingItem.textButton
         }
     }
 }

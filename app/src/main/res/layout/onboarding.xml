@@ -3,7 +3,6 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="112dp"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -50,18 +49,4 @@
             android:textFontWeight="400"
             android:textSize="14sp" />
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutPagination"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonOndoarding"
-        style="@style/ButtonOrange"
-        android:layout_width="311dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="88dp"/>
 </LinearLayout>

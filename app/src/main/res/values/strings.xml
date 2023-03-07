@@ -3,5 +3,7 @@
     <string name="splash_screen">girl</string>
     <string name="intro">intro</string>
     <string name="skip">Skip</string>
-    <string name="OnboardingDescription">Quarantine is the perfect time to spend your \n day learning something new, from anywhere!</string>
+    <string name="OnboardingDescription">Quarantine is the perfect time to spend your \n day learning something new, from anywhere! \n</string>
+    <string name="next">Next</string>
+    <string name="start">Let’s Start</string>
 </resources>
