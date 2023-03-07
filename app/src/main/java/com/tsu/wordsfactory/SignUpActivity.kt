@@ -8,7 +8,6 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var builder: AlertDialog.Builder
