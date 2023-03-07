@@ -6,4 +6,10 @@
     <string name="OnboardingDescription">Quarantine is the perfect time to spend your \n day learning something new, from anywhere! \n</string>
     <string name="next">Next</string>
     <string name="start">Let’s Start</string>
+    <string name="signUp">Sign up</string>
+    <string name="login">Log in</string>
+    <string name="name">Name</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="account">Create your account</string>
 </resources>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity">
+
+    <ImageButton
+        android:id="@+id/imageBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/icon_back_background"
+        android:contentDescription="@string/signUp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/signUp"
+            android:src="@drawable/girl_signup" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/rubik_medium"
+            android:gravity="center"
+            android:lineHeight="32dp"
+            android:text="@string/signUp"
+            android:textColor="@color/dark_ink"
+            android:textFontWeight="500"
+            android:textSize="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/rubik"
+            android:gravity="center"
+            android:lineHeight="21dp"
+            android:text="@string/account"
+            android:textColor="@color/dark_gray"
+            android:textFontWeight="400"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editTextTextName"
+            android:layout_width="343dp"
+            android:layout_height="53dp"
+            android:layout_marginBottom="16dp"
+            android:padding="16dp"
+            android:background="@drawable/input_background"
+            android:hint="@string/name"
+            android:inputType="textPersonName"
+            android:fontFamily="@font/rubik"
+            android:textFontWeight="400"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editTextTextEmail"
+            android:layout_width="343dp"
+            android:layout_height="53dp"
+            android:layout_marginBottom="16dp"
+            android:padding="16dp"
+            android:background="@drawable/input_background"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:fontFamily="@font/rubik"
+            android:textFontWeight="400"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editTextTextPassword"
+            android:layout_width="343dp"
+            android:layout_height="53dp"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/input_background"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:fontFamily="@font/rubik"
+            android:textFontWeight="400"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/signUp"
+            style="@style/ButtonOrange"
+            android:layout_width="343dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/signUp" />
+
+        <TextView
+            android:id="@+id/textLogIn"
+            android:layout_width="73dp"
+            android:layout_height="16dp"
+            android:fontFamily="@font/rubik_medium"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textColor="@color/dark_gray"
+            android:textFontWeight="500"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
