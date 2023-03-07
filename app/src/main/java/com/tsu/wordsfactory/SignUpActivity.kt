@@ -32,7 +32,7 @@ class SignUpActivity : AppCompatActivity() {
                                 Toast.makeText(this, "Error", Toast.LENGTH_SHORT)
                             }.show()
             } else {
-                navigateToActivity()
+                navigateToDictionary()
             }
         }
 
@@ -40,13 +40,10 @@ class SignUpActivity : AppCompatActivity() {
             navigateToIntro()
         }
     }
-
-    //поменять, чтоб переходило на активити с словарем
-    private fun navigateToActivity() {
-        startActivity(Intent(applicationContext, MainActivity::class.java))
+    private fun navigateToDictionary() {
+        startActivity(Intent(applicationContext, BottomNavigateActivity::class.java))
         finish()
     }
-
     private fun navigateToIntro() {
         startActivity(Intent(applicationContext, MainActivity::class.java))
         finish()

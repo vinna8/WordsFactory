@@ -39,6 +39,7 @@
             android:src="@drawable/girl_signup" />
 
         <TextView
+            android:id="@+id/TextSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -48,9 +49,10 @@
             android:text="@string/signUp"
             android:textColor="@color/dark_ink"
             android:textFontWeight="500"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <TextView
+            android:id="@+id/TextCreateAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -94,7 +96,8 @@
             app:passwordToggleEnabled="true"
             app:passwordToggleDrawable="@drawable/eye_password"
             app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+            app:boxStrokeWidthFocused="0dp"
+            app:hintEnabled="false">
 
         <EditText
             android:id="@+id/editTextTextPassword"
