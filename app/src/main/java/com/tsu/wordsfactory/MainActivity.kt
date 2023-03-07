@@ -57,15 +57,15 @@ class MainActivity : AppCompatActivity() {
             if (onboardingViewPager.currentItem + 1 < onboardingItemsAdapter.itemCount) {
                 onboardingViewPager.currentItem += 1
             } else {
-                navigateToHomeActivity()
+                navigateToSignUpActivity()
             }
         }
         findViewById<TextView>(R.id.textSkip).setOnClickListener{
-            navigateToHomeActivity()
+            navigateToSignUpActivity()
         }
     }
 
-    private fun navigateToHomeActivity() {
+    private fun navigateToSignUpActivity() {
         startActivity(Intent(applicationContext, SignUpActivity::class.java))
         finish()
     }
