@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutCommon"
-        android:layout_width="0dp"
+        android:layout_width="343dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,18 +40,15 @@
 
         <LinearLayout
             android:id="@+id/linearLayoutHorizontal1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/TextWord"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/rubik_medium"
                 android:gravity="center"
@@ -83,18 +80,15 @@
 
         <LinearLayout
             android:id="@+id/linearLayoutHorizontal2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/titleTextPartOfSpeech"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/rubik_medium"
                 android:lineHeight="26dp"
@@ -118,10 +112,8 @@
 
         <TextView
             android:id="@+id/textMeanings"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="40dp"
             android:fontFamily="@font/rubik_medium"
             android:lineHeight="26dp"
             android:text="@string/meaning"
