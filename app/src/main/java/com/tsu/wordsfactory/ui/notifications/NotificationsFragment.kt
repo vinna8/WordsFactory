@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.tsu.wordsfactory.MyWebViewClient
 import com.tsu.wordsfactory.databinding.FragmentNotificationsBinding
 
 class NotificationsFragment : Fragment() {
@@ -27,6 +27,9 @@ class NotificationsFragment : Fragment() {
 
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        binding.webView.webViewClient = MyWebViewClient()
+        binding.webView.loadUrl("https://learnenglish.britishcouncil.org/general-english/video-zone")
 
         return root
     }
