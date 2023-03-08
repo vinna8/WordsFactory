@@ -22,16 +22,17 @@
             android:layout_marginBottom="16dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
-            app:passwordToggleDrawable="@drawable/ic_search"
-            app:passwordToggleEnabled="true">
+            app:hintEnabled="false">
 
             <EditText
                 android:id="@+id/editTextTextSearch"
                 android:layout_width="343dp"
                 android:layout_height="56dp"
+                android:padding="16dp"
+                android:drawableEnd="@drawable/ic_search"
                 android:background="@drawable/input_background"
                 android:fontFamily="@font/rubik"
-                android:hint="@string/title_dictionary"
+                android:hint="@string/cooking"
                 android:inputType="text"
                 android:textFontWeight="400"
                 android:textSize="14sp" />
