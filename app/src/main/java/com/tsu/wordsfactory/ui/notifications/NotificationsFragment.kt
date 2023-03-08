@@ -28,6 +28,8 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        binding.webView.loadUrl("https://learnenglish.britishcouncil.org/general-english/video-zone")
+
         return root
     }
 
