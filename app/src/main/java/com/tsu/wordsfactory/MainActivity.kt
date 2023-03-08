@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 ),
                 OnboardingItem(
                     onboardingImage = R.drawable.intro3,
-                    title = "Improve your skills",
+                    title = "\n Improve your skills",
                 ),
             )
         )
