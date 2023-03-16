@@ -8,20 +8,26 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.tsu.wordsfactory.databinding.ActivityMainBinding
+import com.tsu.wordsfactory.databinding.ActivitySignUpBinding
+
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var builder: AlertDialog.Builder
+    private lateinit var binding: ActivitySignUpBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val nameField = findViewById<EditText>(R.id.editTextTextName)
-        val emailField = findViewById<EditText>(R.id.editTextTextEmail)
-        val passwordField = findViewById<EditText>(R.id.editTextTextPassword)
+        val nameField = binding.editTextTextName
+        val emailField = binding.editTextTextEmail
+        val passwordField = binding.editTextTextPassword
 
         builder = AlertDialog.Builder(this)
 
-        findViewById<Button>(R.id.buttonSignUp).setOnClickListener {
+
+        binding.buttonSignUp.setOnClickListener {
             if (nameField.text.toString().trim().isEmpty() ||
                 emailField.text.toString().trim().isEmpty() ||
                 passwordField.text.toString().trim().isEmpty()) {
@@ -36,7 +42,7 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
 
-        findViewById<ImageButton>(R.id.buttonBack).setOnClickListener {
+        binding.buttonBack.setOnClickListener {
             navigateToIntro()
         }
     }

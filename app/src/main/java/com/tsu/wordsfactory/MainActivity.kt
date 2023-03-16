@@ -8,18 +8,22 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.tsu.wordsfactory.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var onboardingItemsAdapter: OnboardingItemsAdapter
     private lateinit var indicatorsContainer: LinearLayout
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setOnboardingItems()
         setupIndicators()
         setCurrentIndicator(0)
@@ -42,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                 ),
             )
         )
-        val onboardingViewPager = findViewById<ViewPager2>(R.id.onboardingViewPager)
+        val onboardingViewPager = binding.onboardingViewPager
         onboardingViewPager.adapter = onboardingItemsAdapter
         onboardingViewPager.registerOnPageChangeCallback(object :
             ViewPager2.OnPageChangeCallback() {
@@ -53,14 +57,14 @@ class MainActivity : AppCompatActivity() {
             })
         (onboardingViewPager.getChildAt(0) as RecyclerView).overScrollMode =
             RecyclerView.OVER_SCROLL_NEVER
-        findViewById<Button>(R.id.buttonOndoarding).setOnClickListener{
+        binding.buttonOndoarding.setOnClickListener{
             if (onboardingViewPager.currentItem + 1 < onboardingItemsAdapter.itemCount) {
                 onboardingViewPager.currentItem += 1
             } else {
                 navigateToSignUpActivity()
             }
         }
-        findViewById<TextView>(R.id.textSkip).setOnClickListener{
+        binding.textSkip.setOnClickListener{
             navigateToSignUpActivity()
         }
     }
@@ -71,7 +75,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupIndicators() {
-        indicatorsContainer = findViewById(R.id.linearLayoutPagination)
+        indicatorsContainer = binding.linearLayoutPagination
         val indicators = arrayOfNulls<ImageView>(onboardingItemsAdapter.itemCount)
         val layoutParams: LinearLayout.LayoutParams =
             LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
@@ -103,9 +107,9 @@ class MainActivity : AppCompatActivity() {
                     )
                 )
                 if (position == childCount - 1) {
-                    findViewById<Button>(R.id.buttonOndoarding).setText(R.string.start)
+                    binding.buttonOndoarding.setText(R.string.start)
                 } else {
-                    findViewById<Button>(R.id.buttonOndoarding).setText(R.string.next)
+                    binding.buttonOndoarding.setText(R.string.next)
                 }
             } else {
                 imageView.setImageDrawable(

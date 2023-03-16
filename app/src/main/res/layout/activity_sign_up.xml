@@ -18,120 +18,121 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flowAllContentSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:gravity="center"
+        app:flow_verticalGap="16dp"
         android:orientation="vertical"
+        app:constraint_referenced_ids="imageSignUp,flowTextContent,editTextTextName,editTextTextEmail,textInputLayout,buttonSignUp,textLogIn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageSignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:contentDescription="@string/signUp"
-            android:src="@drawable/girl_signup" />
+    <ImageView
+        android:id="@+id/imageSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/signUp"
+        android:src="@drawable/girl_signup" />
 
-        <TextView
-            android:id="@+id/TextSignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/rubik_medium"
-            android:gravity="center"
-            android:lineHeight="32dp"
-            android:text="@string/signUp"
-            android:textColor="@color/dark_ink"
-            android:textFontWeight="500"
-            android:textSize="24sp" />
+    <TextView
+        android:id="@+id/TextSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik_medium"
+        android:gravity="center"
+        android:lineHeight="32dp"
+        android:text="@string/signUp"
+        android:textColor="@color/dark_ink"
+        android:textFontWeight="500"
+        android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/TextCreateAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/rubik"
-            android:gravity="center"
-            android:lineHeight="21dp"
-            android:text="@string/account"
-            android:textColor="@color/dark_gray"
-            android:textFontWeight="400"
-            android:textSize="14sp" />
+    <TextView
+        android:id="@+id/TextCreateAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik"
+        android:gravity="center"
+        android:lineHeight="21dp"
+        android:text="@string/account"
+        android:textColor="@color/dark_gray"
+        android:textFontWeight="400"
+        android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/editTextTextName"
-            android:layout_width="343dp"
-            android:layout_height="53dp"
-            android:layout_marginBottom="16dp"
-            android:padding="16dp"
-            android:background="@drawable/input_background"
-            android:hint="@string/name"
-            android:inputType="textPersonName"
-            android:fontFamily="@font/rubik"
-            android:textFontWeight="400"
-            android:textSize="14sp" />
+    <EditText
+        android:id="@+id/editTextTextName"
+        android:layout_width="343dp"
+        android:layout_height="53dp"
+        android:background="@drawable/input_background"
+        android:fontFamily="@font/rubik"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        android:padding="16dp"
+        android:textFontWeight="400"
+        android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/editTextTextEmail"
-            android:layout_width="343dp"
-            android:layout_height="53dp"
-            android:layout_marginBottom="16dp"
-            android:padding="16dp"
-            android:background="@drawable/input_background"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            android:fontFamily="@font/rubik"
-            android:textFontWeight="400"
-            android:textSize="14sp" />
+    <EditText
+        android:id="@+id/editTextTextEmail"
+        android:layout_width="343dp"
+        android:layout_height="53dp"
+        android:background="@drawable/input_background"
+        android:fontFamily="@font/rubik"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:textFontWeight="400"
+        android:textSize="14sp" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleDrawable="@drawable/eye_password"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:hintEnabled="false">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:hintEnabled="false"
+        app:passwordToggleDrawable="@drawable/eye_password"
+        app:passwordToggleEnabled="true">
 
         <EditText
             android:id="@+id/editTextTextPassword"
             android:layout_width="343dp"
             android:layout_height="53dp"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp"
             android:background="@drawable/input_background"
+            android:fontFamily="@font/rubik"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:fontFamily="@font/rubik"
+            android:padding="16dp"
             android:textFontWeight="400"
             android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonSignUp"
-            style="@style/ButtonOrange"
-            android:layout_width="343dp"
-            android:layout_height="56dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/signUp" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonSignUp"
+        style="@style/ButtonOrange"
+        android:layout_width="343dp"
+        android:layout_height="56dp"
+        android:text="@string/signUp" />
 
-        <TextView
-            android:id="@+id/textLogIn"
-            android:layout_width="73dp"
-            android:layout_height="16dp"
-            android:fontFamily="@font/rubik_medium"
-            android:gravity="center"
-            android:text="@string/login"
-            android:textColor="@color/dark_gray"
-            android:textFontWeight="500"
-            android:textSize="14sp" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textLogIn"
+        android:layout_width="73dp"
+        android:layout_height="16dp"
+        android:fontFamily="@font/rubik_medium"
+        android:gravity="center"
+        android:text="@string/login"
+        android:textColor="@color/dark_gray"
+        android:textFontWeight="500"
+        android:textSize="14sp" />
 
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flowTextContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:flow_verticalGap="8dp"
+        app:constraint_referenced_ids="TextSignUp,TextCreateAccount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

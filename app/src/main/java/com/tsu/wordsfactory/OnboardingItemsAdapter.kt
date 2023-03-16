@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.tsu.wordsfactory.databinding.ActivityMainBinding
+import com.tsu.wordsfactory.databinding.ActivitySplashBinding
 
 class OnboardingItemsAdapter(private val onboardingItems: List<OnboardingItem>) :
     RecyclerView.Adapter<OnboardingItemsAdapter.OnboardingItemViewHolder>() {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnboardingItemViewHolder {
         return OnboardingItemViewHolder(
             LayoutInflater.from(parent.context).inflate(
