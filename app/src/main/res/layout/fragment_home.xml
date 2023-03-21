@@ -25,14 +25,25 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:background="@drawable/input_background"
-            android:drawableEnd="@drawable/ic_search"
             android:fontFamily="@font/rubik"
-            android:hint="@string/cooking"
+            android:hint="@string/title_dictionary"
             android:inputType="text"
             android:padding="16dp"
             android:textFontWeight="400"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/buttonSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/ic_search"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayout2" />
 
     <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/flowWordAndSound"
@@ -41,13 +52,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
-        app:constraint_referenced_ids="TextWord, TextTranscription, imageSound"
+        app:constraint_referenced_ids="textWord, textTranscription, imageSound"
         app:flow_horizontalGap="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
     <TextView
-        android:id="@+id/TextWord"
+        android:id="@+id/textWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/rubik_medium"
@@ -58,7 +69,7 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/TextTranscription"
+        android:id="@+id/textTranscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/rubik_medium"
@@ -68,12 +79,12 @@
         android:textFontWeight="400"
         android:textSize="14sp" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageSound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/transcription"
-        android:src="@drawable/ic_sound" />
+        android:background="@drawable/ic_sound" />
 
     <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/flowPartOfSpeech"
