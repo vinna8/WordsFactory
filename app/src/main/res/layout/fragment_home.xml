@@ -63,7 +63,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/rubik_medium"
         android:lineHeight="32dp"
-        android:text="@string/cooking"
         android:textColor="@color/black"
         android:textFontWeight="500"
         android:textSize="24sp" />
@@ -74,17 +73,23 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/rubik_medium"
         android:lineHeight="32dp"
-        android:text="@string/transcription"
         android:textColor="@color/primary"
         android:textFontWeight="400"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@+id/textWord"
+        app:layout_constraintTop_toTopOf="@+id/textWord"/>
 
     <ImageButton
         android:id="@+id/imageSound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:contentDescription="@string/transcription"
-        android:background="@drawable/ic_sound" />
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="87dp"
+        app:layout_constraintStart_toStartOf="@+id/textTranscription"
+        app:layout_constraintTop_toTopOf="@+id/textWord" />
 
     <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/flowPartOfSpeech"
@@ -104,7 +109,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/rubik_medium"
         android:lineHeight="26dp"
-        android:text="@string/titleTextPartOfSpeech"
         android:textColor="@color/black"
         android:textFontWeight="500"
         android:textSize="20sp" />
@@ -116,7 +120,6 @@
         android:fontFamily="@font/rubik_medium"
         android:gravity="center"
         android:lineHeight="21dp"
-        android:text="@string/textPartOfSpeech"
         android:textColor="@color/black"
         android:textFontWeight="400"
         android:textSize="14sp" />
@@ -129,141 +132,23 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/rubik_medium"
         android:lineHeight="26dp"
-        android:text="@string/meaning"
         android:textColor="@color/black"
         android:textFontWeight="500"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flowPartOfSpeech" />
 
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/flowMeanings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMeanings"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="11dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/input_background"
-        android:orientation="vertical"
-        android:paddingStart="16dp"
-        android:paddingTop="16dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="16dp"
-        app:constraint_referenced_ids="textMeaning1, flowExample"
-        app:flow_verticalGap="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAddToDictionary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textMeanings" />
-
-    <TextView
-        android:id="@+id/textMeaning1"
-        android:layout_width="343dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/rubik_medium"
-        android:lineHeight="21dp"
-        android:text="@string/meaning1"
-        android:textColor="@color/black"
-        android:textFontWeight="400"
-        android:textSize="14sp" />
-
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/flowExample"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:constraint_referenced_ids="example1, exampleText1"
-        app:flow_horizontalGap="3dp"
-        app:layout_constraintStart_toStartOf="@+id/flowMeanings"
-        app:layout_constraintTop_toBottomOf="@+id/textMeaning1" />
-
-    <TextView
-        android:id="@+id/example1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/rubik"
-        android:lineHeight="21dp"
-        android:text="@string/example"
-        android:textColor="@color/blue"
-        android:textFontWeight="400"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/exampleText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/rubik_medium"
-        android:lineHeight="21dp"
-        android:text="@string/example1"
-        android:textColor="@color/black"
-        android:textFontWeight="400"
-        android:textSize="14sp" />
-
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/flowMeanings2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/input_background"
-        android:orientation="vertical"
-        android:paddingStart="16dp"
-        android:paddingTop="16dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="16dp"
-        app:constraint_referenced_ids="textMeaning2, flowExample2"
-        app:flow_verticalGap="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flowMeanings" />
-
-    <TextView
-        android:id="@+id/textMeaning2"
-        android:layout_width="343dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/rubik_medium"
-        android:lineHeight="21dp"
-        android:text="@string/meaning1"
-        android:textColor="@color/black"
-        android:textFontWeight="400"
-        android:textSize="14sp" />
-
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/flowExample2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:orientation="horizontal"
-        app:constraint_referenced_ids="example2, exampleText2"
-        app:flow_horizontalGap="3dp"
-        app:layout_constraintStart_toStartOf="@+id/flowMeanings2"
-        app:layout_constraintTop_toBottomOf="@+id/textMeaning2" />
-
-    <TextView
-        android:id="@+id/example2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/rubik"
-        android:lineHeight="21dp"
-        android:text="@string/example"
-        android:textColor="@color/blue"
-        android:textFontWeight="400"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/exampleText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/rubik_medium"
-        android:lineHeight="21dp"
-        android:text="@string/example1"
-        android:textColor="@color/black"
-        android:textFontWeight="400"
-        android:textSize="14sp" />
+        app:layout_constraintTop_toBottomOf="@+id/textMeanings"
+        tools:listitem="@layout/item_meaning" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonAddToDictionary"

@@ -11,9 +11,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.tsu.wordsfactory.DictionaryAPI
-import com.tsu.wordsfactory.R
-import com.tsu.wordsfactory.Word
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.tsu.wordsfactory.*
 import com.tsu.wordsfactory.databinding.FragmentHomeBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,6 +25,7 @@ import java.io.IOException
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
+    private lateinit var meaningItemsAdapter: MeaningItemsAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -58,25 +58,32 @@ class HomeFragment : Fragment() {
                 val enteredWord = binding.editTextTextSearch.text.toString()
                 val result = service.getWord(enteredWord)
 
-                println(result.toString())
-                println(result[0].toString())
+                /*println(result.toString())
+                println(result[0].toString())*/
 
                 withContext(Dispatchers.Main) {
                     myResponse.value = result[0]
                 }
             }
+
             myResponse.observe(this, Observer{
                 binding.textWord.text = it.word
                 binding.textTranscription.text = it.phonetic
                 binding.textPartOfSpeech.text = it.meanings[0].partOfSpeech
+
+                binding.titleTextPartOfSpeech.setText(R.string.titleTextPartOfSpeech)
+                binding.textMeanings.setText(R.string.meaning)
 
                 audioURL = it.phonetics[0].audio
 
                 if (audioURL.isNotEmpty()) {
                     binding.imageSound.setImageResource(R.drawable.ic_sound)
                 } else {
-                    binding.imageSound.setBackgroundResource(R.color.white)
+                    binding.imageSound.setImageResource(0)
                 }
+
+                binding.recyclerViewMeanings.layoutManager = LinearLayoutManager(context)
+                binding.recyclerViewMeanings.adapter = MeaningItemsAdapter(it.meanings[0].definitions)
             })
         }
 
