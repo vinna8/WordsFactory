@@ -45,9 +45,8 @@ class HomeFragment : Fragment() {
     var audioURL = ""
     var partOfSpeech = ""
     var definitions = arrayListOf<Definitions>()
-
-    /*var definition = ""
-    var example = ""*/
+    val meanings = arrayListOf<String>()
+    val examples = arrayListOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,7 +60,7 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         val database = Room.databaseBuilder(activity!!.applicationContext,
-            WordDB::class.java, "words_database").build()
+            WordDB::class.java, "words_database").fallbackToDestructiveMigration().build()
         builder = AlertDialog.Builder(activity!!)
 
         binding.buttonSearch.setOnClickListener {
@@ -75,77 +74,71 @@ class HomeFragment : Fragment() {
 
             lifecycleScope.launch(Dispatchers.IO) {
                 val enteredWord = binding.editTextTextSearch.text.toString()
-                /*val result = service.getWord(enteredWord)*/
-
-                /*println(result.toString())
-                println(result[0].toString())*/
 
                 if (!checkNetwork()) {
                     lifecycleScope.launch(Dispatchers.IO) {
                         val words = database.wordDao().findWord(enteredWord)
-                        println(words)
+                        val meanings = database.meaningDao().findMeanings(enteredWord)
 
                         if (words !== null) {
-                        /*println(words)*/
                             word = words.word
                             phonetic = words.phonetic
                             audioURL = words.audio
                             partOfSpeech = words.partOfSpeech
 
-                            activity?.runOnUiThread{updateLayout()}
+                            definitions.clear()
+                            meanings.forEach {
+                                definitions.add(Definitions(it.definition, it.example))
+                            }
+
+                            withContext(Dispatchers.Main) {
+                                updateLayout()
+                            }
                         } else {
                             withContext(Dispatchers.Main) {
-                                builder.setTitle("Error").
-                                    setMessage("There is no internet connection and the word hasn't been added to the dictionary before").
-                                    setCancelable(true).
-                                    setPositiveButton("Ok") { dialog, id ->
-                                        Toast.makeText(activity, "Error", Toast.LENGTH_SHORT)
-                                    }.show()
+                                dialogWindow("There is no internet connection and the word hasn't been added to the dictionary before")
                             }
                         }
                     }
                 } else {
-                    val result = service.getWord(enteredWord)
+                    try {
+                        val result = service.getWord(enteredWord)
 
-                    withContext(Dispatchers.Main) {
-                        myResponse.value = result[0]
+                        withContext(Dispatchers.Main) {
+                            myResponse.value = result[0]
+                        }
+                    }
+                    catch (_: Throwable) {
+                        lifecycleScope.launch(Dispatchers.Main) {
+                            dialogWindow("No word found")
+                        }
                     }
                 }
             }
             myResponse.observe(this, Observer{
-                /*binding.textWord.text = it.word
-                binding.textTranscription.text = it.phonetic
-                binding.textPartOfSpeech.text = it.meanings[0].partOfSpeech
-
-                binding.titleTextPartOfSpeech.setText(R.string.titleTextPartOfSpeech)
-                binding.textMeanings.setText(R.string.meaning)*/
                 word = it.word
                 phonetic = it.phonetic
                 audioURL = it.phonetics[0].audio
                 partOfSpeech = it.meanings[0].partOfSpeech
                 definitions = it.meanings[0].definitions
 
-                updateLayout()
+                meanings.clear()
+                examples.clear()
+                definitions.forEach {
+                    val meaning = it.definition
+                    meanings.add(meaning)
 
-                /*if (audioURL.isNotEmpty()) {
-                    binding.imageSound.setImageResource(R.drawable.ic_sound)
-                } else {
-                    binding.imageSound.setImageResource(0)
+                    val example = it.example ?: ""
+                    examples.add(example)
                 }
 
-                binding.recyclerViewMeanings.layoutManager = LinearLayoutManager(context)
-                binding.recyclerViewMeanings.adapter = MeaningItemsAdapter(definitions)*/
+                updateLayout()
             })
         }
 
         binding.imageSound.setOnClickListener {
             if (!checkNetwork()) {
-                builder.setTitle("Error").
-                    setMessage("No internet connection").
-                    setCancelable(true).
-                    setPositiveButton("Ok") { dialog, id ->
-                        Toast.makeText(activity, "Error", Toast.LENGTH_SHORT)
-                    }.show()
+                dialogWindow("No internet connection")
             } else {
                 playAudio()
             }
@@ -153,19 +146,21 @@ class HomeFragment : Fragment() {
 
         binding.buttonAddToDictionary.setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
-                /*if (database.wordDao().findWord(word).word !== null) {
+                val saveWord = database.wordDao().findWord(word)
+                if (saveWord !== null) {
                     withContext(Dispatchers.Main) {
-                        builder.setTitle("Alert").
-                            setMessage("The word has already been added to the dictionary").
-                            setCancelable(true).
-                            setPositiveButton("Ok") { dialog, id ->
-                                Toast.makeText(activity, "Error", Toast.LENGTH_SHORT)
-                            }.show()
-                        }
-                } else {*/
+                        dialogWindow("The word has already been added to the dictionary")
+                    }
+                } else {
                     database.wordDao()
                         .insertWord(WordEntity(word, phonetic, audioURL, partOfSpeech))
-                /*}*/
+                    var i = 0
+                    meanings.forEach{
+                        database.meaningDao()
+                            .insertMeaning(MeaningEntity(0, word, it, examples[i]))
+                        i++
+                    }
+                }
             }
         }
 
@@ -200,6 +195,15 @@ class HomeFragment : Fragment() {
         } catch (e: IOException) {
             e.printStackTrace()
         }
+    }
+
+    private fun dialogWindow(message: String) {
+        builder.setTitle("Error").
+        setMessage(message).
+        setCancelable(true).
+        setPositiveButton("Ok") { dialog, id ->
+            Toast.makeText(activity, "Error", Toast.LENGTH_SHORT)
+        }.show()
     }
 
     private fun checkNetwork(): Boolean {
