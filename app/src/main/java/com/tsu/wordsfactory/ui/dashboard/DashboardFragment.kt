@@ -1,6 +1,7 @@
 package com.tsu.wordsfactory.ui.dashboard
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.tsu.wordsfactory.R
+import com.tsu.wordsfactory.TestActivity
 import com.tsu.wordsfactory.WordDB
 import com.tsu.wordsfactory.databinding.FragmentDashboardBinding
 import kotlinx.coroutines.*
@@ -122,7 +124,7 @@ class DashboardFragment : Fragment() {
                                 R.color.blue
                             )
                         )
-                        binding.progressBar.setIndicatorColor(
+                        binding.progressBarCircle.setIndicatorColor(
                             ContextCompat.getColor(
                                 requireContext(),
                                 R.color.blue
@@ -136,7 +138,7 @@ class DashboardFragment : Fragment() {
                                 R.color.green
                             )
                         )
-                        binding.progressBar.setIndicatorColor(
+                        binding.progressBarCircle.setIndicatorColor(
                             ContextCompat.getColor(
                                 requireContext(),
                                 R.color.green
@@ -150,7 +152,7 @@ class DashboardFragment : Fragment() {
                                 R.color.yellow
                             )
                         )
-                        binding.progressBar.setIndicatorColor(
+                        binding.progressBarCircle.setIndicatorColor(
                             ContextCompat.getColor(
                                 requireContext(),
                                 R.color.yellow
@@ -164,7 +166,7 @@ class DashboardFragment : Fragment() {
                                 R.color.red
                             )
                         )
-                        binding.progressBar.setIndicatorColor(
+                        binding.progressBarCircle.setIndicatorColor(
                             ContextCompat.getColor(
                                 requireContext(),
                                 R.color.red
@@ -178,7 +180,7 @@ class DashboardFragment : Fragment() {
                                 R.color.primary
                             )
                         )
-                        binding.progressBar.setIndicatorColor(
+                        binding.progressBarCircle.setIndicatorColor(
                             ContextCompat.getColor(
                                 requireContext(),
                                 R.color.primary
@@ -188,10 +190,16 @@ class DashboardFragment : Fragment() {
                     }
                 }
 
-                val animator = ObjectAnimator.ofInt(binding.progressBar, "progress", 0, 100)
+                val animator = ObjectAnimator.ofInt(binding.progressBarCircle, "progress", 0, 100)
                 animator.duration = 1000
                 animator.start()
             }
+        }
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            delay(6300)
+            timer.cancelAndJoin()
+            startActivity(Intent(requireContext(), TestActivity::class.java))
         }
     }
     override fun onDestroyView() {

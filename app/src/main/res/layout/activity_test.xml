@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TestActivity">
+
+    <ImageButton
+        android:id="@+id/buttonBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/icon_back_background"
+        android:contentDescription="@string/signUp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flowAllContentTest"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="vertical"
+        app:constraint_referenced_ids="flowNumberAndQuestionText, testOption1, testOption2, testOption3"
+        app:flow_verticalGap="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBack" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flowNumberAndQuestionText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:flow_verticalGap="8dp"
+        app:constraint_referenced_ids="numberText, questionText" />
+
+    <TextView
+        android:id="@+id/numberText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 of 10"
+        android:fontFamily="@font/rubik"
+        android:textFontWeight="400"
+        android:textSize="16sp"
+        android:lineHeight="26dp"
+        android:gravity="center"
+        android:textColor="@color/dark_gray"/>
+
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik_medium"
+        android:gravity="center"
+        android:lineHeight="32dp"
+        android:text="The practice or skill of \n preparing food by combining, \n mixing, and heating \n ingredients."
+        android:textColor="@color/dark_ink"
+        android:textFontWeight="500"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/numberText"
+        app:layout_constraintStart_toStartOf="@+id/numberText"
+        app:layout_constraintTop_toBottomOf="@+id/numberText" />
+
+    <TextView
+        android:id="@+id/testOption1"
+        android:layout_width="343dp"
+        android:layout_height="58dp"
+        android:background="@drawable/input_background"
+        android:fontFamily="@font/rubik"
+        android:lineHeight="26dp"
+        android:paddingLeft="24dp"
+        android:paddingTop="16dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="16dp"
+        android:text="A. Cooking"
+        android:textFontWeight="400"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="@+id/questionText"
+        app:layout_constraintStart_toStartOf="@+id/questionText"
+        app:layout_constraintTop_toBottomOf="@+id/flowNumberAndQuestionText" />
+
+    <TextView
+        android:id="@+id/testOption2"
+        android:layout_width="343dp"
+        android:layout_height="58dp"
+        android:background="@drawable/input_background"
+        android:fontFamily="@font/rubik"
+        android:lineHeight="26dp"
+        android:paddingLeft="24dp"
+        android:paddingTop="16dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="16dp"
+        android:text="B. Cooking"
+        android:textFontWeight="400"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="@+id/questionText"
+        app:layout_constraintStart_toStartOf="@+id/questionText"
+        app:layout_constraintTop_toBottomOf="@+id/testOption1" />
+
+    <TextView
+        android:id="@+id/testOption3"
+        android:layout_width="343dp"
+        android:layout_height="58dp"
+        android:background="@drawable/input_background"
+        android:fontFamily="@font/rubik"
+        android:lineHeight="26dp"
+        android:paddingLeft="24dp"
+        android:paddingTop="16dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="16dp"
+        android:text="C. Cooking"
+        android:textFontWeight="400"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="@+id/questionText"
+        app:layout_constraintStart_toStartOf="@+id/questionText"
+        app:layout_constraintTop_toBottomOf="@+id/testOption2" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressBarLinear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:indicatorColor="@color/primary"
+        app:trackCornerRadius="100dp"
+        app:trackThickness="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TrainingFinishActivity">
+
+    <ImageButton
+        android:id="@+id/buttonBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/icon_back_background"
+        android:contentDescription="@string/signUp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flowAllContentFinishTest"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:constraint_referenced_ids="imageFinish, flowTextFinishContent, buttonAgain"
+        app:flow_verticalGap="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageFinish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/finish" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flowTextFinishContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:constraint_referenced_ids="textFinish, CorrectAndIncorrectText"
+        app:flow_verticalGap="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageFinish"
+        app:layout_constraintStart_toStartOf="@+id/imageFinish"
+        app:layout_constraintTop_toBottomOf="@+id/imageFinish" />
+
+    <TextView
+        android:id="@+id/textFinish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/finish"
+        android:fontFamily="@font/rubik_medium"
+        android:textFontWeight="500"
+        android:textSize="24sp"
+        android:lineHeight="32dp"
+        android:gravity="center"
+        android:textColor="@color/dark_ink" />
+
+    <TextView
+        android:id="@+id/CorrectAndIncorrectText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik"
+        android:gravity="center"
+        android:lineHeight="21dp"
+        android:text="Correct: 9 \n Incorrect: 1"
+        android:textColor="@color/dark_gray"
+        android:textFontWeight="400"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/flowTextFinishContent"
+        app:layout_constraintTop_toBottomOf="@+id/flowTextFinishContent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonAgain"
+        style="@style/ButtonOrange"
+        android:layout_width="343dp"
+        android:layout_height="56dp"
+        android:text="@string/again"
+        app:layout_constraintEnd_toEndOf="@+id/flowTextFinishContent"
+        app:layout_constraintStart_toStartOf="@+id/flowTextFinishContent"
+        app:layout_constraintTop_toBottomOf="@+id/flowTextFinishContent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

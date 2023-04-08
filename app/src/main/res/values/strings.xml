@@ -33,4 +33,7 @@
 
     <string name="startTraining">Start</string>
     <string name="go">GO!</string>
+
+    <string name="finish">Training is finished</string>
+    <string name="again">Again</string>
 </resources>
