@@ -10,4 +10,7 @@ interface WordDao {
 
     @Query("SELECT * FROM wordentity WHERE word LIKE :word")
     fun findWord(word: String): WordEntity
+
+    @Query("SELECT COUNT(*) FROM wordentity")
+    fun getCount(): Int
 }

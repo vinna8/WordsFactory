@@ -5,4 +5,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
+
+    <TextView
+        android:id="@+id/countWordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik_medium"
+        android:gravity="center"
+        android:lineHeight="32dp"
+        android:textColor="@color/black"
+        android:textFontWeight="500"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStartTraining"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonStartTraining"
+        style="@style/ButtonOrange"
+        android:layout_width="343dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="76dp"
+        android:text="@string/startTraining"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressBar"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="96dp"
+        app:indicatorSize="130dp"
+        app:indicatorColor="@color/primary"
+        app:indicatorDirectionCircular="clockwise"
+        app:trackCornerRadius="5dp"
+        app:trackThickness="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countWordText" />
+
+    <TextView
+        android:id="@+id/progressText"
+        android:layout_width="wrap_content"
+        android:layout_height="130dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="96dp"
+        android:fontFamily="@font/rubik_medium"
+        android:gravity="center"
+        android:textFontWeight="700"
+        android:textSize="56sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countWordText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

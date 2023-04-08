@@ -30,4 +30,7 @@
     <string name="meaning1">The practice or skill of preparing food by combining, mixing, and heating ingredients.</string>
     <string name="example">Example: </string>
     <string name="example1">he developed an interest in cooking.</string>
+
+    <string name="startTraining">Start</string>
+    <string name="go">GO!</string>
 </resources>
