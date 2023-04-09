@@ -153,7 +153,7 @@ class HomeFragment : Fragment() {
                     }
                 } else {
                     database.wordDao()
-                        .insertWord(WordEntity(word, phonetic, audioURL, partOfSpeech))
+                        .insertWord(WordEntity(word, phonetic, audioURL, partOfSpeech, 0))
                     var i = 0
                     meanings.forEach{
                         database.meaningDao()

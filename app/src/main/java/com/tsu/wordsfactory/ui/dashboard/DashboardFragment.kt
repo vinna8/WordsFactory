@@ -1,7 +1,6 @@
 package com.tsu.wordsfactory.ui.dashboard
 
 import android.animation.ObjectAnimator
-import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
@@ -15,9 +14,9 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import androidx.room.Room
 import com.tsu.wordsfactory.R
-import com.tsu.wordsfactory.TestActivity
 import com.tsu.wordsfactory.WordDB
 import com.tsu.wordsfactory.databinding.FragmentDashboardBinding
 import kotlinx.coroutines.*
@@ -64,10 +63,11 @@ class DashboardFragment : Fragment() {
                     binding.countWordText.text = text
                 }
 
-
                 binding.buttonStartTraining.setOnClickListener {
                     if (size != 0) {
                         binding.buttonStartTraining.visibility = View.INVISIBLE
+                        binding.progressBarCircle.visibility = View.VISIBLE
+                        binding.progressText.visibility = View.VISIBLE
                         timerStart()
 
                     } else {
@@ -88,7 +88,7 @@ class DashboardFragment : Fragment() {
 
     private val job = SupervisorJob()
     private val scope = CoroutineScope(Dispatchers.Default + job)
-    private fun startCoroutineTimer(delayMillis: Long = 0, repeatMillis: Long = 0, action: () -> Unit) =scope.launch(Dispatchers.IO) {
+    private fun startCoroutineTimer(delayMillis: Long = 0, repeatMillis: Long = 0, action: () -> Unit) = scope.launch(Dispatchers.IO) {
         delay(delayMillis)
         if (repeatMillis > 0) {
             while (isActive) {
@@ -199,7 +199,13 @@ class DashboardFragment : Fragment() {
         lifecycleScope.launch(Dispatchers.Main) {
             delay(6300)
             timer.cancelAndJoin()
-            startActivity(Intent(requireContext(), TestActivity::class.java))
+
+            val navController = Navigation.findNavController(binding.root)
+            navController.navigate(R.id.action_navigation_dashboard_to_testActivity)
+
+            binding.progressBarCircle.visibility = View.INVISIBLE
+            binding.progressText.visibility = View.INVISIBLE
+            binding.buttonStartTraining.visibility = View.VISIBLE
         }
     }
     override fun onDestroyView() {

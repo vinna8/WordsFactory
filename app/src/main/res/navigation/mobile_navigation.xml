@@ -15,11 +15,20 @@
         android:id="@+id/navigation_dashboard"
         android:name="com.tsu.wordsfactory.ui.dashboard.DashboardFragment"
         android:label="@string/title_training"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_testActivity"
+            app:destination="@id/testActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.tsu.wordsfactory.ui.notifications.NotificationsFragment"
         android:label="@string/title_video"
         tools:layout="@layout/fragment_notifications" />
+    <activity
+        android:id="@+id/testActivity"
+        android:name="com.tsu.wordsfactory.TestActivity"
+        android:label="activity_test"
+        tools:layout="@layout/activity_test" />
 </navigation>

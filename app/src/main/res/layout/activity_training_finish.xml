@@ -41,7 +41,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:constraint_referenced_ids="textFinish, CorrectAndIncorrectText"
+        app:constraint_referenced_ids="textFinish, flowCorrectAndIncorrect"
         app:flow_verticalGap="8dp"
         app:layout_constraintEnd_toEndOf="@+id/imageFinish"
         app:layout_constraintStart_toStartOf="@+id/imageFinish"
@@ -59,20 +59,40 @@
         android:gravity="center"
         android:textColor="@color/dark_ink" />
 
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flowCorrectAndIncorrect"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:constraint_referenced_ids="correctText, incorrectText"
+        app:layout_constraintEnd_toEndOf="@+id/textFinish"
+        app:layout_constraintStart_toStartOf="@+id/textFinish"
+        app:layout_constraintTop_toBottomOf="@+id/textFinish" />
+
     <TextView
-        android:id="@+id/CorrectAndIncorrectText"
+        android:id="@+id/correctText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/rubik"
         android:gravity="center"
         android:lineHeight="21dp"
-        android:text="Correct: 9 \n Incorrect: 1"
+        android:textColor="@color/dark_gray"
+        android:textFontWeight="400"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/incorrectText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik"
+        android:gravity="center"
+        android:lineHeight="21dp"
         android:textColor="@color/dark_gray"
         android:textFontWeight="400"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/flowTextFinishContent"
-        app:layout_constraintTop_toBottomOf="@+id/flowTextFinishContent" />
+        app:layout_constraintEnd_toEndOf="@+id/correctText"
+        app:layout_constraintStart_toStartOf="@+id/correctText"
+        app:layout_constraintTop_toBottomOf="@+id/correctText" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonAgain"

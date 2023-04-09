@@ -36,10 +36,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:flow_verticalGap="8dp"
-        app:constraint_referenced_ids="numberText, questionText" />
+        app:constraint_referenced_ids="positionText, questionText" />
 
     <TextView
-        android:id="@+id/numberText"
+        android:id="@+id/positionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1 of 10"
@@ -54,6 +54,8 @@
         android:id="@+id/questionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
         android:fontFamily="@font/rubik_medium"
         android:gravity="center"
         android:lineHeight="32dp"
@@ -61,9 +63,9 @@
         android:textColor="@color/dark_ink"
         android:textFontWeight="500"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/numberText"
-        app:layout_constraintStart_toStartOf="@+id/numberText"
-        app:layout_constraintTop_toBottomOf="@+id/numberText" />
+        app:layout_constraintEnd_toEndOf="@+id/flowNumberAndQuestionText"
+        app:layout_constraintStart_toStartOf="@+id/flowNumberAndQuestionText"
+        app:layout_constraintTop_toBottomOf="@+id/positionText" />
 
     <TextView
         android:id="@+id/testOption1"
@@ -76,7 +78,6 @@
         android:paddingTop="16dp"
         android:paddingRight="24dp"
         android:paddingBottom="16dp"
-        android:text="A. Cooking"
         android:textFontWeight="400"
         android:textSize="16sp"
         android:gravity="center_vertical"
@@ -95,7 +96,6 @@
         android:paddingTop="16dp"
         android:paddingRight="24dp"
         android:paddingBottom="16dp"
-        android:text="B. Cooking"
         android:textFontWeight="400"
         android:textSize="16sp"
         android:gravity="center_vertical"
@@ -114,7 +114,6 @@
         android:paddingTop="16dp"
         android:paddingRight="24dp"
         android:paddingBottom="16dp"
-        android:text="C. Cooking"
         android:textFontWeight="400"
         android:textSize="16sp"
         android:gravity="center_vertical"
@@ -122,7 +121,7 @@
         app:layout_constraintStart_toStartOf="@+id/questionText"
         app:layout_constraintTop_toBottomOf="@+id/testOption2" />
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
+    <!--<com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressBarLinear"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -130,10 +129,23 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         app:indicatorColor="@color/primary"
+        app:trackColor="@color/gray"
         app:trackCornerRadius="100dp"
         app:trackThickness="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" /> -->
 
+    <ProgressBar
+        android:id="@+id/progressBarLinear"
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:progressDrawable="@drawable/lineargradient"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
