@@ -97,7 +97,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonAgain"
         style="@style/ButtonOrange"
-        android:layout_width="343dp"
+        android:layout_width="309dp"
         android:layout_height="56dp"
         android:text="@string/again"
         app:layout_constraintEnd_toEndOf="@+id/flowTextFinishContent"

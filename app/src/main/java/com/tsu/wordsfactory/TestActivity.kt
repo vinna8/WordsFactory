@@ -64,7 +64,6 @@ class TestActivity : AppCompatActivity() {
 
     private fun testStart() {
         position = 0
-        rightAnswers = 0
         wrongWords.clear()
 
         lifecycleScope.launch(Dispatchers.IO) {
@@ -79,34 +78,35 @@ class TestActivity : AppCompatActivity() {
                 val meanings = database.meaningDao().findMeanings(it)
                 wordsAndMeaning.add(Pair(meanings[0].word, meanings[(meanings.indices).random()].definition))
             }
-            println(wordsAndMeaning)
 
             size = database.wordDao().getCount()
 
             if (size > 2) {
                 val allWords = ArrayList(database.wordDao().getAllWords())
-                println(allWords)
 
-                for (i in 0 until size) {
-                    println(wordsAndMeaning[i].first)
-                    println(allWords.indexOf(wordsAndMeaning[i].first))
+                for (i in 0 until wordsAndMeaning.size) {
+                    val rightWord = wordsAndMeaning[i].first
+                    allWords.remove(rightWord)
 
-                    /*allWords.drop(allWords.indexOf(wordsAndMeaning[i].first))*/
-                    /*println(allWords)*/
-                    wrongWords.add(Pair(allWords[(0 until size).random()], allWords[(0 until size).random()]))
-                    /*println(wrongWords)*/
+                    val firstWrongWord = allWords[(0 until allWords.size).random()]
+                    allWords.remove(firstWrongWord)
+                    val twoWrongWord = allWords[(0 until allWords.size).random()]
+                    allWords.add(firstWrongWord)
+
+                    wrongWords.add(Pair(firstWrongWord, twoWrongWord))
+                    allWords.add(wordsAndMeaning[i].first)
                 }
-
-                //  Неправильные ответы должны быть взяты из сохраненных слов (но они не должны быть равны правильному)
-            // чтоб одинаковых не было и чтоб не равны
             }
-
-            drawAnswerTest()
+            lifecycleScope.launch(Dispatchers.Main) {
+                answerTestLayout()
+            }
         }
     }
 
-    private fun drawAnswerTest(){
-        /*timerStart()*/
+    private fun answerTestLayout() {
+        timerStart()
+
+        if (size > 10) size = 10
 
         if (position < size) {
             binding.positionText.text = "${position + 1} of $size"
@@ -143,48 +143,52 @@ class TestActivity : AppCompatActivity() {
         binding.testOption2.setBackgroundResource(R.drawable.input_background)
         binding.testOption3.setBackgroundResource(R.drawable.input_background)
 
-        val temp = position
+        val t = position
         if (word.removeRange(0, 3).lowercase() == wordsAndMeaning[position].first.lowercase()){
             rightAnswers++
+            lifecycleScope.launch(Dispatchers.IO) {
+                database.wordDao().plusLearningSpeed(words[t])
+            }
+        } else {
+            lifecycleScope.launch(Dispatchers.IO) {
+                database.wordDao().minusLearningSpeed((words[t]))
+            }
         }
         position++
-        drawAnswerTest()
+        answerTestLayout()
     }
 
     private val job = SupervisorJob()
     private val scope = CoroutineScope(Dispatchers.Default + job)
 
-    private fun startCoroutineTimer(delayMillis: Long = 0, repeatMillis: Long = 0, action: () -> Unit) = scope.launch(
-        Dispatchers.IO) {
-        delay(delayMillis)
-        if (repeatMillis > 0) {
-            while (isActive) {
+    private fun startCoroutineTimer(delayMillis: Long = 0, repeatMillis: Long = 0, action: () -> Unit) =
+        scope.launch(Dispatchers.IO) {
+            delay(delayMillis)
+            if (repeatMillis > 0) {
+                while (isActive) {
+                    action()
+                    delay(repeatMillis)
+                }
+            } else {
                 action()
-                delay(repeatMillis)
             }
-        } else {
-            action()
         }
-    }
 
     private fun timerStart() {
-        binding.progressBarLinear.max = 8
-        binding.progressBarLinear.min = 0
+        binding.progressBarLinear.max = 6
+        binding.progressBarLinear.min = 1
 
         var second = 0
 
         val timer: Job = startCoroutineTimer(0, 1000) {
             lifecycleScope.launch(Dispatchers.Main) {
                 binding.progressBarLinear.progress = second
-                /*val animator = ObjectAnimator.ofInt(binding.progressBarLinear, "progress", second)
-                animator.duration = 1000
-                animator.start()*/
             }
             second++
         }
 
         lifecycleScope.launch(Dispatchers.Main) {
-            delay(8000)
+            delay(6000)
             timer.cancelAndJoin()
             checkAnswer("   ")
         }
